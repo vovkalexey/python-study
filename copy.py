@@ -1,37 +1,17 @@
 # Задание 1. Факториал
 
-
 def fac(n):
-    if (n < 0):
-        return None
-    if (n == 0):
-        return 1
-    if (n == 1):
-        return n
-    return n * fac(n - 1)
-
+  pass
 
 # Задание 2. Наибольший общий делитель (НОД) для двух целых чисел
 
-
-def gcd(a, b):
-    while a != 0 and b != 0:
-        if a > b:
-            a = a - b
-        else:
-            b = b - a
-    return (a + b)
-
+def gcd(a, b):    
+  pass
 
 # Задание 3. Генератор для ряда Фибоначчи
 
-
-def fib():
-    a, b = 1, 1
-    while True:
-        yield a
-        a, b = b, a + b
-
+def fib():   
+  pass
 
 # Задание 4. Напишите реализацию функции is_palindrome, которая проверяет, является ли последовательность палиндромом
 #
@@ -42,9 +22,8 @@ def fib():
 # >>> is_palindrome([1, 2, 3, 2, 1])
 # True
 
-
 def is_palindrome(seq):
-    return list(seq) == list(reversed(seq))
+  pass
 
 
 # Задание 5. Напишите реализацию функции is_unique, которая проверяет, содержит ли последовательность только уникальные элементы.
@@ -53,9 +32,8 @@ def is_palindrome(seq):
 # >>> is_unique([1, 2, 3, 4, 5])
 # True
 
-
 def is_unique(seq):
-    return len(list(seq)) == len(set(seq))
+  pass
 
 
 # Задание 6. Напишите реализацию функции, которая вычисляет контрольную сумму последовательности чисел по модулю 10. Аргумент -- строку, содержащую только цифры, -- необходимо преобразовать в последовательность чисел, вычислить их сумму, и вернуть остаток от деления на 10.
@@ -68,13 +46,8 @@ def is_unique(seq):
 # >>> checksum('12345')
 # 5
 
-
 def checksum(code):
-    a = 0
-    for i in list(code):
-        a += int(i)
-        a = a % 10
-    return (a)
+  pass
 
 
 # Задание 7*. Преобразование вложенных последовательностей
@@ -88,16 +61,5 @@ def checksum(code):
 # >>> flatten([(1, 2), (3, 4)])
 # [1, 2, 3, 4]
 
-
 def flatten(seq):
-    a = []
-    for i in seq:
-        if type(i) == int or type(i) == str:
-            a.append(i)
-        else:
-            a.extend(flatten(i))
-    return a
-
-
-# def xflatten(seq):
-#    pass
+  pass
