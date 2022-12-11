@@ -1,103 +1,40 @@
-# Задание 1. Факториал
+class Money:
+  def __init__(self, currency, amount):
+    self.currency = currency
+    self.amount = amount
 
+  def __eq__(self, other):
+    return self.currency == other.currency and self.amount == other.amount
 
-def fac(n):
-    if (n < 0):
-        return None
-    if (n == 0):
-        return 1
-    if (n == 1):
-        return n
-    return n * fac(n - 1)
+  def __add__(self, other):
+    if self.currency != other.currency:
+        raise ValueError
+    return Money(self.currency, self.amount + other.amount)
 
+  def __sub__(self, other):
+    if self.currency != other.currency:
+        raise ValueError
+    return Money(self.currency, self.amount - other.amount)
 
-# Задание 2. Наибольший общий делитель (НОД) для двух целых чисел
+class Point():
 
+  def __init__(self, x, y):
+    self.x = x
+    self.y = y
 
-def gcd(a, b):
-    while a != 0 and b != 0:
-        if a > b:
-            a = a - b
-        else:
-            b = b - a
-    return (a + b)
+  def __eq__(self, other):
+    return self.y == other.y and self.x == other.x
 
+  def __add__(self, other):
+    return Point(self.x + other.x, self.y + other.y)
 
-# Задание 3. Генератор для ряда Фибоначчи
+  def __sub__(self, other):
+    return Point(self.x - other.x, self.y - other.y)
 
+  def __imul__(self, other):
+    self.x *= other
+    self.y *= other
+    return Point(self.x, self.y)
 
-def fib():
-    a, b = 1, 1
-    while True:
-        yield a
-        a, b = b, a + b
-
-
-# Задание 4. Напишите реализацию функции is_palindrome, которая проверяет, является ли последовательность палиндромом
-#
-# >>> is_palindrome('aba')
-# True
-# >>> is_palindrome('abc')
-# False
-# >>> is_palindrome([1, 2, 3, 2, 1])
-# True
-
-
-def is_palindrome(seq):
-    return list(seq) == list(reversed(seq))
-
-
-# Задание 5. Напишите реализацию функции is_unique, которая проверяет, содержит ли последовательность только уникальные элементы.
-# >>> is_unique([1, 2, 3, 2, 1])
-# False
-# >>> is_unique([1, 2, 3, 4, 5])
-# True
-
-
-def is_unique(seq):
-    return len(list(seq)) == len(set(seq))
-
-
-# Задание 6. Напишите реализацию функции, которая вычисляет контрольную сумму последовательности чисел по модулю 10. Аргумент -- строку, содержащую только цифры, -- необходимо преобразовать в последовательность чисел, вычислить их сумму, и вернуть остаток от деления на 10.
-# Пример: '12345' -> [1, 2, 3, 4, 5] -> 15 -> 5
-#
-# >>> checksum('123')
-# 6
-# >>> checksum('1234')
-# 0
-# >>> checksum('12345')
-# 5
-
-
-def checksum(code):
-    a = 0
-    for i in list(code):
-        a += int(i)
-        a = a % 10
-    return (a)
-
-
-# Задание 7*. Преобразование вложенных последовательностей
-#
-# >>> flatten([])
-# []
-# >>> flatten([1, 2])
-# [1, 2]
-# >>> flatten([1, [2, [3]]])
-# [1, 2, 3]
-# >>> flatten([(1, 2), (3, 4)])
-# [1, 2, 3, 4]
-
-
-def flatten(seq):
-    a = []
-    for i in seq:
-        if type(i) == int or type(i) == str:
-            a.append(i)
-        else:
-            a.extend(flatten(i))
-    return a
-
-
-# def xflatten(seq):
-#    pass
+  def dist(self, other):
+    return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
