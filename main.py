@@ -1,40 +1,27 @@
-class Money:
-  def __init__(self, currency, amount):
-    self.currency = currency
-    self.amount = amount
+import json
+def decode_text():
+  with open('text.txt', 'rt') as file:
+    data = file.read()
+    dict = json.load(open('dict.json', 'rt'))
+    content = ''
+    for key in data:
+      if key in dict:
+        content += dict[key]
+      else:
+        content += key
+    return content  
 
-  def __eq__(self, other):
-    return self.currency == other.currency and self.amount == other.amount
-
-  def __add__(self, other):
-    if self.currency != other.currency:
-        raise ValueError
-    return Money(self.currency, self.amount + other.amount)
-
-  def __sub__(self, other):
-    if self.currency != other.currency:
-        raise ValueError
-    return Money(self.currency, self.amount - other.amount)
-
-class Point():
-
-  def __init__(self, x, y):
-    self.x = x
-    self.y = y
-
-  def __eq__(self, other):
-    return self.y == other.y and self.x == other.x
-
-  def __add__(self, other):
-    return Point(self.x + other.x, self.y + other.y)
-
-  def __sub__(self, other):
-    return Point(self.x - other.x, self.y - other.y)
-
-  def __imul__(self, other):
-    self.x *= other
-    self.y *= other
-    return Point(self.x, self.y)
-
-  def dist(self, other):
-    return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2) ** 0.5
+def decode_bin():
+  with open('0008.bin', 'rb') as file:
+    data = file.read()
+    dict = json.load(open('0008.json', 'rt'))
+    new_dict = {}
+    for i in dict:
+      new_dict[int(i)]=dict[i]
+    content = ''
+    for key in data:
+      if key in new_dict:
+        content += new_dict[key]
+      else:
+        content += chr(key)
+    return content
